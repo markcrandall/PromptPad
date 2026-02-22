@@ -139,9 +139,23 @@ Edit this file directly to change settings. Changes take effect on the next laun
 
 ## Installation
 
-### Option A: Install Script (recommended)
+### Option A: Download and Run (no build required)
 
-Build the project, then run the install script:
+Download `PromptPad.exe` from the [Releases](../../releases) page. The self-contained exe bundles the .NET runtime — no .NET installation needed.
+
+1. Download `PromptPad.exe` from the latest release
+2. Place it in a directory of your choice (e.g., `C:\Tools\`)
+3. Run `install.ps1` to add it to PATH and set EDITOR, or do it manually:
+
+```cmd
+setx EDITOR "C:\Tools\PromptPad.exe"
+```
+
+**First-launch note:** On its very first run, the self-contained exe extracts the bundled .NET runtime to a cache directory (`%LOCALAPPDATA%\Temp\.net\PromptPad\`). This one-time extraction can take several seconds. All subsequent launches start in under a second.
+
+### Option B: Install Script
+
+If building from source, use the install script after publishing:
 
 ```powershell
 # Build
@@ -164,20 +178,9 @@ To uninstall:
 .\install.ps1 -Uninstall
 ```
 
-### Option B: Manual Installation
+### Option C: Build from Source
 
-1. Build the project (see [Building from Source](#building-from-source) below)
-2. Copy `PromptPad.exe` to a directory of your choice
-3. Add that directory to your PATH
-4. Set the EDITOR variable:
-
-```cmd
-setx EDITOR "promptpad.exe"
-```
-
-### Choosing a Build: Framework-Dependent vs Self-Contained
-
-PromptPad ships two publish profiles:
+See [Building from Source](#building-from-source) below. Two publish profiles are available:
 
 | | Framework-Dependent | Self-Contained |
 |---|---|---|
@@ -186,9 +189,7 @@ PromptPad ships two publish profiles:
 | **Startup speed** | Fast | Fast (after first launch) |
 | **Best for** | Users with .NET 8 installed | Users without .NET 8 |
 
-**First-launch note for the self-contained build:** On its very first run, the self-contained exe extracts the bundled .NET runtime to a cache directory (`%LOCALAPPDATA%\Temp\.net\PromptPad\`). This one-time extraction can take several seconds. All subsequent launches use the cache and start in under a second — the same speed as the framework-dependent build.
-
-**Recommendation:** Use the framework-dependent build if you have the [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) installed. It's smaller and has no first-launch delay.
+Building from source requires the [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) for both profiles. The "self-contained" label means the **output exe** runs without .NET on the target machine — the SDK is still needed to compile.
 
 ## Building from Source
 
