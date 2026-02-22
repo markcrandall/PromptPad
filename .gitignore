@@ -1,0 +1,42 @@
+## .NET / Visual Studio
+bin/
+obj/
+publish/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docuser
+
+## Visual Studio cache/options
+.vs/
+
+## NuGet
+**/packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+
+## Publish profile user overrides
+src/**/Properties/PublishProfiles/*.pubxml.user
+
+## Rider / JetBrains
+.idea/
+_ReSharper*/
+*.DotSettings.user
+
+## OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+## Logs
+*.log
